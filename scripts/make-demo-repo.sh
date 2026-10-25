@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Creates a throwaway repository with several branches, authors and a pending merge conflict,
-# for trying out Git Workbench:  scripts/make-demo-repo.sh /tmp/gw-demo && code /tmp/gw-demo
+# for trying out Git Merge Studio:  scripts/make-demo-repo.sh /tmp/gw-demo && code /tmp/gw-demo
 set -euo pipefail
 dir="${1:?usage: make-demo-repo.sh <directory>}"
 rm -rf "$dir"
@@ -33,7 +33,7 @@ def main():
 if __name__ == "__main__":
     main()
 PY
-printf '# Demo\n\nA demo project for trying Git Workbench.\n\n## Features\n\n- greetings\n- addition\n- shouting\n\n## License\n\nMIT\n' > README.md
+printf '# Demo\n\nA demo project for trying Git Merge Studio.\n\n## Features\n\n- greetings\n- addition\n- shouting\n\n## License\n\nMIT\n' > README.md
 git add . && as "Demo User" demo@example.com -- commit -qm "Initial commit"
 
 mkdir -p src/utils

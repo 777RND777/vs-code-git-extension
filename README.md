@@ -1,10 +1,10 @@
-# Git Workbench
+# Git Merge Studio
 
 A PyCharm-style Git workflow for VS Code: a flat commit log with real filters, commit inspection, cherry-pick / rebase / merge from the log, and a 3-pane conflict resolver.
 
 ## Features
 
-**Git Log** (`Git Workbench: Show Log`, or the commit icon in the Source Control title bar)
+**Git Log** (`Git Merge Studio: Show Log`, or the commit icon in the Source Control title bar)
 - One flat list of commits from all branches, newest first, with branch and tag labels.
 - Filter by branch (sidebar or dropdown), by one or more users (including "me"), by message text or hash, and by path.
 - Click a commit to see its changed files and message. Cmd/Ctrl-click or Shift-click several commits to see their **combined** changes.
@@ -12,7 +12,7 @@ A PyCharm-style Git workflow for VS Code: a flat commit log with real filters, c
 - Right-click commits to cherry-pick, revert, reset, rebase onto, merge, check out, or create a branch or tag.
 - Right-click branches to check them out, merge them, rebase onto them or delete them.
 
-**Conflicts** (`Git Workbench: Resolve Conflicts`, the status bar item, or the banner in the log)
+**Conflicts** (`Git Merge Studio: Resolve Conflicts`, the status bar item, or the banner in the log)
 - Lists conflicted files with what each side did (modified, added or deleted).
 - Accept Yours, Accept Theirs, or Merge… for one or several files.
 - Continue, Skip or Abort the merge, rebase, cherry-pick or revert.

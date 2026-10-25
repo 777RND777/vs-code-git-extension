@@ -88,7 +88,7 @@ export class RepoManager implements vscode.Disposable {
     if (fromFile) return fromFile;
     const all = this.list();
     if (all.length <= 1) {
-      if (!all.length) vscode.window.showWarningMessage('Git Workbench: no Git repository is open in this workspace.');
+      if (!all.length) vscode.window.showWarningMessage('Git Merge Studio: no Git repository is open in this workspace.');
       return all[0];
     }
     const choice = await vscode.window.showQuickPick(

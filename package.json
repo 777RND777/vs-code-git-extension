@@ -1,6 +1,6 @@
 {
-  "name": "git-workbench",
-  "displayName": "Git Workbench",
+  "name": "git-merge-studio",
+  "displayName": "Git Merge Studio",
   "description": "PyCharm-style Git log, commit inspection, cherry-pick/rebase/merge and a 3-pane conflict resolver.",
   "version": "0.1.0",
   "publisher": "NurmukhanbetRakhimbayev",
@@ -44,25 +44,25 @@
       {
         "command": "gitWorkbench.openLog",
         "title": "Show Log",
-        "category": "Git Workbench",
+        "category": "Git Merge Studio",
         "icon": "$(git-commit)"
       },
       {
         "command": "gitWorkbench.fileHistory",
         "title": "Show History",
-        "category": "Git Workbench",
+        "category": "Git Merge Studio",
         "icon": "$(history)"
       },
       {
         "command": "gitWorkbench.resolveConflicts",
         "title": "Resolve Conflicts",
-        "category": "Git Workbench",
+        "category": "Git Merge Studio",
         "icon": "$(git-merge)"
       },
       {
         "command": "gitWorkbench.openMergeTool",
         "title": "Open in 3-Pane Merge Tool",
-        "category": "Git Workbench",
+        "category": "Git Merge Studio",
         "icon": "$(git-merge)"
       }
     ],
@@ -111,7 +111,7 @@
       ]
     },
     "configuration": {
-      "title": "Git Workbench",
+      "title": "Git Merge Studio",
       "properties": {
         "gitWorkbench.log.pageSize": {
           "type": "number",
