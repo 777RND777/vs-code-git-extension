@@ -3,8 +3,13 @@
   "displayName": "Git Workbench",
   "description": "PyCharm-style Git log, commit inspection, cherry-pick/rebase/merge and a 3-pane conflict resolver.",
   "version": "0.1.0",
-  "publisher": "your-publisher-id",
+  "publisher": "NurmukhanbetRakhimbayev",
   "license": "MIT",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#1f7a37",
+    "theme": "dark"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/777RND777/vs-code-git-extension.git"
