@@ -1,0 +1,252 @@
+:root {
+  --cols: minmax(0, 1fr) 44px minmax(0, 1fr) 44px minmax(0, 1fr);
+  --lh: 19px;
+  --c-conflict: rgba(230, 80, 80, 0.2);
+  --c-conflict-edge: rgba(230, 80, 80, 0.55);
+  --c-modified: rgba(70, 140, 230, 0.18);
+  --c-modified-edge: rgba(70, 140, 230, 0.5);
+  --c-added: rgba(80, 190, 110, 0.18);
+  --c-added-edge: rgba(80, 190, 110, 0.5);
+  --c-deleted: rgba(140, 140, 140, 0.2);
+  --c-deleted-edge: rgba(140, 140, 140, 0.55);
+  --c-resolved: rgba(128, 128, 128, 0.07);
+}
+
+.merge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.merge-status .codicon-warning {
+  color: var(--vscode-editorWarning-foreground, #cca700);
+}
+
+.merge-status .ok {
+  color: var(--vscode-testing-iconPassed, #73c991);
+}
+
+.merge-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+
+.merge-scroll {
+  flex: 1;
+  overflow: auto;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: var(--vscode-editor-font-size, 13px);
+}
+
+.merge-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: var(--cols);
+  background: var(--vscode-editor-background);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--vscode-font-family);
+}
+
+.col-title {
+  padding: 5px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.region {
+  display: grid;
+  grid-template-columns: var(--cols);
+}
+
+.cell {
+  position: relative;
+  min-width: 0;
+  overflow-x: auto;
+  line-height: var(--lh);
+}
+
+.region.change .cell {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.cell.result {
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.line {
+  display: flex;
+  height: var(--lh);
+  white-space: pre;
+}
+
+.ln {
+  flex-shrink: 0;
+  width: 44px;
+  padding-right: 10px;
+  text-align: right;
+  color: var(--vscode-editorLineNumber-foreground, var(--muted));
+  user-select: none;
+}
+
+.code {
+  flex: 1;
+}
+
+.cell.same:not(.result) .code {
+  color: var(--muted);
+}
+
+.empty-marker {
+  height: 2px;
+}
+
+.editor {
+  display: block;
+  width: 100%;
+  min-height: var(--lh);
+  margin: 0;
+  padding: 0 24px 0 10px;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: pre;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: var(--lh);
+  field-sizing: content;
+  tab-size: 4;
+}
+
+.editor:focus {
+  background: var(--vscode-editor-lineHighlightBackground, rgba(128, 128, 128, 0.08));
+}
+
+.editor::placeholder {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Change colors */
+
+.cell.conflict {
+  background: var(--c-conflict);
+  border-color: var(--c-conflict-edge) !important;
+}
+
+.cell.modified {
+  background: var(--c-modified);
+  border-color: var(--c-modified-edge) !important;
+}
+
+.cell.added {
+  background: var(--c-added);
+  border-color: var(--c-added-edge) !important;
+}
+
+.cell.deleted {
+  background: var(--c-deleted);
+  border-color: var(--c-deleted-edge) !important;
+}
+
+.cell.done {
+  opacity: 0.55;
+}
+
+.cell.result.resolved {
+  background: var(--c-resolved);
+  border-color: var(--border) !important;
+}
+
+.cell.unchanged .code {
+  color: var(--muted);
+}
+
+/* Gutters with apply/ignore controls */
+
+.gutter {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  padding-top: 1px;
+}
+
+.gutter .act {
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 1px;
+}
+
+.gutter .act.apply {
+  font-size: 16px;
+  color: var(--vscode-textLink-foreground);
+}
+
+.gutter .act.ignore {
+  color: var(--muted);
+}
+
+.gutter .act:hover {
+  background: var(--vscode-toolbar-hoverBackground, rgba(128, 128, 128, 0.25));
+}
+
+.gutter .state {
+  color: var(--muted);
+}
+
+.reset {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.reset:hover {
+  color: var(--vscode-foreground);
+}
+
+.fold {
+  height: var(--lh);
+  padding-left: 10px;
+  color: var(--muted);
+  font-family: var(--vscode-font-family);
+  font-size: 0.9em;
+  cursor: pointer;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.fold:hover {
+  color: var(--vscode-foreground);
+  background: var(--vscode-list-hoverBackground);
+}
+
+.region.flash {
+  animation: flash 0.9s ease-out;
+}
+
+@keyframes flash {
+  0% {
+    outline: 2px solid var(--vscode-focusBorder);
+  }
+  100% {
+    outline: 2px solid transparent;
+  }
+}

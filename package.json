@@ -1,0 +1,131 @@
+{
+  "name": "git-workbench",
+  "displayName": "Git Workbench",
+  "description": "PyCharm-style Git log, commit inspection, cherry-pick/rebase/merge and a 3-pane conflict resolver.",
+  "version": "0.1.0",
+  "publisher": "your-publisher-id",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "SCM Providers",
+    "Other"
+  ],
+  "keywords": [
+    "git",
+    "log",
+    "merge",
+    "conflict",
+    "cherry-pick"
+  ],
+  "main": "./dist/extension.js",
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "gitWorkbench.openLog",
+        "title": "Show Log",
+        "category": "Git Workbench",
+        "icon": "$(git-commit)"
+      },
+      {
+        "command": "gitWorkbench.fileHistory",
+        "title": "Show History",
+        "category": "Git Workbench",
+        "icon": "$(history)"
+      },
+      {
+        "command": "gitWorkbench.resolveConflicts",
+        "title": "Resolve Conflicts",
+        "category": "Git Workbench",
+        "icon": "$(git-merge)"
+      },
+      {
+        "command": "gitWorkbench.openMergeTool",
+        "title": "Open in 3-Pane Merge Tool",
+        "category": "Git Workbench",
+        "icon": "$(git-merge)"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "gitWorkbench.openLog",
+          "when": "scmProvider == git",
+          "group": "navigation@50"
+        },
+        {
+          "command": "gitWorkbench.resolveConflicts",
+          "when": "scmProvider == git && gitWorkbench.hasConflicts",
+          "group": "navigation@49"
+        }
+      ],
+      "scm/resourceState/context": [
+        {
+          "command": "gitWorkbench.openMergeTool",
+          "when": "scmProvider == git && scmResourceGroup == merge",
+          "group": "inline"
+        },
+        {
+          "command": "gitWorkbench.openMergeTool",
+          "when": "scmProvider == git && scmResourceGroup == merge",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "gitWorkbench.fileHistory",
+          "group": "gitWorkbench@1"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "gitWorkbench.fileHistory",
+          "group": "gitWorkbench@1"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "gitWorkbench.openMergeTool",
+          "when": "gitWorkbench.hasConflicts"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Git Workbench",
+      "properties": {
+        "gitWorkbench.log.pageSize": {
+          "type": "number",
+          "default": 500,
+          "description": "Number of commits loaded at a time in the log."
+        },
+        "gitWorkbench.merge.autoApplyNonConflicting": {
+          "type": "boolean",
+          "default": true,
+          "description": "Apply non-conflicting changes automatically when the merge tool opens."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "esbuild test/*.test.ts --bundle --platform=node --format=esm --packages=external --outdir=out-test --out-extension:.js=.mjs --log-level=warning && node --test out-test/",
+    "package": "node esbuild.mjs --production && vsce package",
+    "vscode:prepublish": "node esbuild.mjs --production"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/vscode": "^1.95.0",
+    "@vscode/codicons": "^0.0.36",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.0"
+  }
+}

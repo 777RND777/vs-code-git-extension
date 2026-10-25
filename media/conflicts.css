@@ -1,0 +1,139 @@
+#app {
+  padding: 16px 20px;
+  gap: 14px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.heading > .codicon[class*='codicon-'] {
+  font-size: 24px;
+}
+
+.heading .title {
+  font-size: 1.15em;
+  font-weight: 600;
+}
+
+.conflicts-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 14px;
+}
+
+.table {
+  flex: 1;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.thead,
+.trow {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.thead {
+  height: 26px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--vscode-editor-background);
+}
+
+.thead span,
+.trow span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trow {
+  height: 24px;
+  cursor: default;
+  user-select: none;
+}
+
+.trow:hover {
+  background: var(--vscode-list-hoverBackground);
+}
+
+.trow.selected {
+  background: var(--vscode-list-activeSelectionBackground);
+  color: var(--vscode-list-activeSelectionForeground);
+}
+
+.trow .file {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--conflict);
+}
+
+.trow.selected .file {
+  color: inherit;
+}
+
+.trow .dir {
+  font-size: 0.9em;
+}
+
+.side.deleted {
+  color: var(--deleted);
+}
+
+.side.added {
+  color: var(--added);
+}
+
+.side-actions {
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.side-actions .btn {
+  justify-content: flex-start;
+}
+
+.hint {
+  margin-top: 8px;
+  font-size: 0.9em;
+}
+
+.done {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.done > .codicon[class*='codicon-'] {
+  font-size: 32px;
+}
+
+.ok {
+  color: var(--vscode-testing-iconPassed, #73c991);
+}
+
+.footer {
+  display: flex;
+  gap: 8px;
+}
+
+.footer .spacer {
+  flex: 1;
+}
