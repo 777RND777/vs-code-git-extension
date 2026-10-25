@@ -5,6 +5,14 @@
   "version": "0.1.0",
   "publisher": "your-publisher-id",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/777RND777/vs-code-git-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/777RND777/vs-code-git-extension/issues"
+  },
+  "homepage": "https://github.com/777RND777/vs-code-git-extension#readme",
   "engines": {
     "vscode": "^1.95.0"
   },
